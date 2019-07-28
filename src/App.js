@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react'
+import ABC from "./ABC";
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state ={
+      isClicked: false,
+      changeProps: true
+    }
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.setState({isClicked: !this.state.isClicked})}>Click Me from APP</button>
+        <br />
+        <button onClick={() => this.setState({changeProps: !this.state.changeProps})}>Click Me from APP for props</button>
+        {!this.state.isClicked && <ABC changeProps={this.state.changeProps}/>}
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
